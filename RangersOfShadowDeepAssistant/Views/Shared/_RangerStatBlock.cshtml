@@ -1,0 +1,83 @@
+﻿@model RangersOfShadowDeep.Models.IRanger
+
+@{
+    Layout = null;
+}
+<style>
+    div {
+        border: 1px solid #eee;
+    }
+</style>
+<div class="headerRangerName">@Model.Name</div>
+<div class="row">
+    <div class="col">
+        Name
+    </div>
+    <div class="col">
+        @Model.Name
+    </div>
+    <div class="col">
+        Level
+    </div>
+    <div class="col">
+        @Model.Level
+    </div>
+    <div class="col">
+        Experiance
+    </div>
+    <div class="col">
+        @Model.ExperiencePoints
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        Move
+    </div>
+    <div class="col">
+        Fight
+    </div>
+    <div class="col">
+        Shoot
+    </div>
+    <div class="col">
+        Armor
+    </div>
+    <div class="col">
+        Will
+    </div>
+    <div class="col">
+        Health
+    </div>
+    <div class="col">
+        Current Health
+    </div>
+    <div class="col">
+        Recruitment
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        @Model.Move
+    </div>
+    <div class="col">
+        @Model.Fight
+    </div>
+    <div class="col">
+        @Model.Shoot
+    </div>
+    <div class="col">
+        @Model.Armor
+    </div>
+    <div class="col">
+        @Model.Will
+    </div>
+    <div class="col">
+        @Model.HealthMax
+    </div>
+    <div class="col">
+        @Model.Health
+    </div>
+    <div class="col">
+        @Model.Recruitment
+    </div>
+</div>

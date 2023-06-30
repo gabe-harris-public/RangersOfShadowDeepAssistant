@@ -1,0 +1,67 @@
+﻿@model RangersOfShadowDeep.Models.IRanger
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>New Ranger</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Move" class="control-label"></label>
+                <input asp-for="Move" class="form-control" />
+                <span asp-validation-for="Move" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fight" class="control-label"></label>
+                <input asp-for="Fight" class="form-control" />
+                <span asp-validation-for="Fight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Shoot" class="control-label"></label>
+                <input asp-for="Shoot" class="form-control" />
+                <span asp-validation-for="Shoot" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Armor" class="control-label"></label>
+                <input asp-for="Armor" class="form-control" />
+                <span asp-validation-for="Armor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Will" class="control-label"></label>
+                <input asp-for="Will" class="form-control" />
+                <span asp-validation-for="Will" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Health" class="control-label"></label>
+                <input asp-for="Health" class="form-control" />
+                <span asp-validation-for="Health" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HealthMax" class="control-label"></label>
+                <input asp-for="HealthMax" class="form-control" />
+                <span asp-validation-for="HealthMax" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
