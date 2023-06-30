@@ -1,11 +1,11 @@
-﻿@model RangersOfShadowDeep.Models.IRanger
+﻿@model RangersOfShadowDeepAssistant.Models.Dto.RangerDetailViewModel
 
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<partial name="~/Views/Shared/_RangerStatBlock.cshtml" model=Model />
+<partial name="~/Views/Shared/_RangerStatBlock.cshtml" model=Model.Ranger />
 
 <style>
     * {
@@ -202,7 +202,7 @@
 
 <div>
     <button class="view-modal btn btn-primary">Share</button> 
-    @Html.ActionLink("Edit", "Edit", new {id=Model.Id}, new {@class="btn btn-primary"}) 
+    @Html.ActionLink("Edit", "Edit", new {id=Model.Ranger.Id}, new {@class="btn btn-primary"}) 
     <a asp-action="Index" class="btn btn-primary">Back to List</a>
 </div>
 
@@ -216,7 +216,7 @@
         <p>Share via link</p>
         <div class="field">
             <i class="bi bi-link-45deg"></i>
-            <input type="text" readonly value="example.com/share-link">
+            <input type="text" readonly value=@Model.ShareUrl>
             <button class="btn btn-primary">Copy</button>
         </div>
     </div>

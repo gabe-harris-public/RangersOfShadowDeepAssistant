@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Dto\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\RangersOfShadowDeep\RangersOfShadowDeep.csproj" />
   </ItemGroup>
 

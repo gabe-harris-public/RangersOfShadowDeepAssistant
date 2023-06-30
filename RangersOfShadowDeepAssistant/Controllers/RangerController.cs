@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RangersOfShadowDeep.Models;
 using RangersOfShadowDeep.Repository;
+using RangersOfShadowDeepAssistant.Extensions;
+using RangersOfShadowDeepAssistant.Models.Dto;
 
 namespace RangersOfShadowDeepAssistant.Controllers
 {
@@ -56,8 +58,11 @@ namespace RangersOfShadowDeepAssistant.Controllers
 
         public ActionResult Details(Guid id)
         {
-            var rangers = repositoryRangers.Read(id);
-            return View(rangers);
+            var ranger = repositoryRangers.Read(id);
+            RangerDetailViewModel rangerDetailViewModel = new RangerDetailViewModel((Ranger)ranger);
+            rangerDetailViewModel.ShareUrl = Url.Content($"{HttpContext.Request.BaseUrl()}Ranger/Details/{id}");
+
+            return View(rangerDetailViewModel);
         }
 
         public ActionResult Edit(Guid id)
