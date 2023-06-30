@@ -16,6 +16,7 @@ namespace RangersOfShadowDeep.Repository
         {
             // Get a collection (or create, if doesn't exist)
             liteDb.GetCollection<IRanger>("rangers").Insert(rangerToSave);
+            liteDb.Dispose();
             return rangerToSave;
         }
 
@@ -26,6 +27,7 @@ namespace RangersOfShadowDeep.Repository
             {
                 var foundRanger = col.Query().Where(x => x.Id == rangerToDelete.Id).First();
                 col.Delete(foundRanger.Id);
+                liteDb.Dispose();
             }
             catch (Exception ex)
             {
@@ -37,6 +39,7 @@ namespace RangersOfShadowDeep.Repository
         {
             var foundRanger = liteDb.GetCollection<IRanger>("rangers")
             .Query().Where(i => i.Id == id).Single();
+            liteDb.Dispose();
             return foundRanger;
         }
 
@@ -47,7 +50,7 @@ namespace RangersOfShadowDeep.Repository
             var results = col.Query()
                 .OrderBy(x => x.Name)
                 .ToList();
-
+            liteDb.Dispose();
             return results;
         }
 
@@ -68,6 +71,7 @@ namespace RangersOfShadowDeep.Repository
             foundRanger.Shoot = rangerToUpdate.Shoot;
             foundRanger.Will = rangerToUpdate.Will;
             col.Update(foundRanger);
+            liteDb.Dispose();
             return rangerToUpdate;
         }
     }
