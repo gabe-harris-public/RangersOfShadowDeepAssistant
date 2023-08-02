@@ -8,9 +8,9 @@ namespace RangersOfShadowDeepAssistant.Controllers
 {
     public class RangerController : Controller
     {
-        private readonly IRangers repositoryRangers;
+        private readonly IRangersRepository repositoryRangers;
 
-        public RangerController(IRangers rangers)
+        public RangerController(IRangersRepository rangers)
         {
             repositoryRangers = rangers;
         }

@@ -8,7 +8,7 @@ namespace RangerTests
         [Fact]
         public void TestDatabase()
         {
-            var rangersRepository = new RangersOfShadowDeep.Repository.Rangers();
+            var rangersRepository = new RangersOfShadowDeep.Repository.RangersRepository();
 
             var listOfRangers = rangersRepository.ReadAll();
             Assert.NotNull(listOfRangers);
@@ -16,7 +16,7 @@ namespace RangerTests
         [Fact]
         public void TestMoq()
         {
-            var mock = new Mock<IRangers>();
+            var mock = new Mock<IRangersRepository>();
         }
     }
 }

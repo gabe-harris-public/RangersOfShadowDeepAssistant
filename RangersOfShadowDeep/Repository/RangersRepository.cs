@@ -3,11 +3,11 @@ using RangersOfShadowDeep.Models;
 
 namespace RangersOfShadowDeep.Repository
 {
-    public class Rangers : IRangers
+    public class RangersRepository : IRangersRepository
     {
         private LiteDatabase liteDb;
 
-        public Rangers()
+        public RangersRepository()
         {
             liteDb = new LiteDbContext().Database;
         }

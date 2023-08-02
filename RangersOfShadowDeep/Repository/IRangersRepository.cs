@@ -2,7 +2,7 @@
 
 namespace RangersOfShadowDeep.Repository
 {
-    public interface IRangers
+    public interface IRangersRepository
     {
         IRanger Create(IRanger rangerToSave);
 
