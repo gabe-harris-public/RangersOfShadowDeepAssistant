@@ -18,13 +18,17 @@ namespace RangersOfShadowDeepAssistant.Controllers
         }
 
         public ActionResult Create() => View();
-        
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([FromForm] Ranger ranger)
+        public ActionResult Create([FromForm] RangerCreateViewModel rangerCreateViewModel)
         {
-            rangersRepository.Create(ranger);
+            var createdRanger = rangersRepository.Create(rangerCreateViewModel.Ranger);
+
+            Skills newSkills = rangerCreateViewModel.Skills;
+            newSkills.RangerId = createdRanger.Id;
+            skillsRepository.Create(newSkills);
 
             try
             {
