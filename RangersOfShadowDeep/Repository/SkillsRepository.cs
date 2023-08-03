@@ -25,8 +25,8 @@ namespace RangersOfShadowDeep.Repository
             var col = liteDb.GetCollection<ISkills>("skills");
             try
             {
-                var foundSkill = col.Query().Where(x => x.Id == skillToDelete.Id).First();
-                col.Delete(foundSkill.Id);
+                var foundSkill = col.Query().Where(x => x.RangerId == skillToDelete.RangerId).First();
+                col.Delete(foundSkill.RangerId);
                 liteDb.Dispose();
             }
             catch (Exception ex)
@@ -38,7 +38,7 @@ namespace RangersOfShadowDeep.Repository
         public ISkills Read(Guid id)
         {
             var foundSkill = liteDb.GetCollection<ISkills>("skills")
-            .Query().Where(i => i.Id == id).Single();
+            .Query().Where(i => i.RangerId == id).Single();
             liteDb.Dispose();
             return foundSkill;
         }
@@ -55,12 +55,12 @@ namespace RangersOfShadowDeep.Repository
         public ISkills Update(Guid id, ISkills skillToUpdate)
         {
             var col = liteDb.GetCollection<ISkills>("skills");
-            ISkills foundSkill = col.Query().Where(r => r.Id == id).Single();
+            ISkills foundSkill = col.Query().Where(r => r.RangerId == id).Single();
             foundSkill.Acrobatics = skillToUpdate.Acrobatics;
             foundSkill.AncientLore = skillToUpdate.AncientLore;
             foundSkill.Armoury = skillToUpdate.Armoury;
             foundSkill.Climb = skillToUpdate.Climb;
-            foundSkill.Id = id;
+            foundSkill.RangerId = id;
             foundSkill.Leadership = skillToUpdate.Leadership;
             foundSkill.Navigation = skillToUpdate.Navigation;
             foundSkill.Perception = skillToUpdate.Perception;

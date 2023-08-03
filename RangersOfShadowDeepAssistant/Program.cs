@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IRangersRepository, RangersRepository>();
-
+builder.Services.AddScoped<ISkillsRepository, SkillsRepository>();
 
 var app = builder.Build();
 

@@ -8,7 +8,7 @@ namespace RangersOfShadowDeep.Models
 {
     public interface ISkills
     {
-        Guid Id { get; set; }
+        Guid RangerId { get; set; }
         int Acrobatics { get; set; }
         int AncientLore { get; set; }
         int Armoury { get; set; }

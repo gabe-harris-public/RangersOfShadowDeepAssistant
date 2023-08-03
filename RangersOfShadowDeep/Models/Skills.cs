@@ -6,7 +6,7 @@
         public int AncientLore { get; set; }
         public int Armoury { get; set; }
         public int Climb { get; set; }
-        public Guid Id { get; set; }
+        public Guid RangerId { get; set; }
         public int Leadership { get; set; }
         public int Navigation { get; set; }
         public int Perception { get; set; }

@@ -14,4 +14,8 @@
     <ProjectReference Include="..\RangersOfShadowDeep\RangersOfShadowDeep.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Skills\" />
+  </ItemGroup>
+
 </Project>

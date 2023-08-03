@@ -8,11 +8,13 @@ namespace RangersOfShadowDeepAssistant.Controllers
 {
     public class RangerController : Controller
     {
-        private readonly IRangersRepository repositoryRangers;
+        private readonly IRangersRepository rangersRepository;
+        private readonly ISkillsRepository skillsRepository;
 
-        public RangerController(IRangersRepository rangers)
+        public RangerController(IRangersRepository rangers, ISkillsRepository skills)
         {
-            repositoryRangers = rangers;
+            rangersRepository = rangers;
+            skillsRepository = skills;
         }
 
         public ActionResult Create() => View();
@@ -22,7 +24,7 @@ namespace RangersOfShadowDeepAssistant.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([FromForm] Ranger ranger)
         {
-            repositoryRangers.Create(ranger);
+            rangersRepository.Create(ranger);
 
             try
             {
@@ -36,7 +38,7 @@ namespace RangersOfShadowDeepAssistant.Controllers
 
         public ActionResult Delete(Guid id)
         {
-            var foundRanger = repositoryRangers.Read(id);
+            var foundRanger = rangersRepository.Read(id);
             return View(foundRanger);
         }
 
@@ -44,7 +46,7 @@ namespace RangersOfShadowDeepAssistant.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(Guid id, IFormCollection collection)
         {
-            repositoryRangers.Delete(repositoryRangers.Read(id));
+            rangersRepository.Delete(rangersRepository.Read(id));
 
             try
             {
@@ -58,8 +60,10 @@ namespace RangersOfShadowDeepAssistant.Controllers
 
         public ActionResult Details(Guid id)
         {
-            var ranger = repositoryRangers.Read(id);
-            RangerDetailViewModel rangerDetailViewModel = new RangerDetailViewModel((Ranger)ranger);
+            var ranger = rangersRepository.Read(id);
+            var skills = skillsRepository.Read(ranger.Id);
+
+            RangerDetailViewModel rangerDetailViewModel = new RangerDetailViewModel((Ranger)ranger, (Skills)skills);
             rangerDetailViewModel.ShareUrl = Url.Content($"{HttpContext.Request.BaseUrl()}Ranger/Details/{id}");
 
             return View(rangerDetailViewModel);
@@ -67,7 +71,7 @@ namespace RangersOfShadowDeepAssistant.Controllers
 
         public ActionResult Edit(Guid id)
         {
-            var rangertoEdit = repositoryRangers.Read(id);
+            var rangertoEdit = rangersRepository.Read(id);
             return View(rangertoEdit);
         }
 
@@ -75,7 +79,7 @@ namespace RangersOfShadowDeepAssistant.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Guid id, [FromForm] Ranger updatedRanger)
         {
-            repositoryRangers.Update(id, updatedRanger);
+            rangersRepository.Update(id, updatedRanger);
 
             try
             {
@@ -89,7 +93,7 @@ namespace RangersOfShadowDeepAssistant.Controllers
 
         public ActionResult Index()
         {
-            var rangers = repositoryRangers.ReadAll();
+            var rangers = rangersRepository.ReadAll();
             return View(rangers);
         }
     }
